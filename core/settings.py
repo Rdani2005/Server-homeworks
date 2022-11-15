@@ -18,9 +18,9 @@ SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
-INSTALLED_APPS = [
+DJANGO_APPS= [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -28,6 +28,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+THIRD_PARTY_APPS = [
+    'rest_framework',
+]
+
+MY_APPS = [
+    'myapps.homeworks'
+]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -104,11 +114,13 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
+# Media
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
